@@ -17,6 +17,12 @@ local app1 dev false key1  <store_type> <application_name> <env_type> <poll_m
 9.	While Loading file, it can be more than one application under one env from more than one store can be specified.
 10.	Github store testing has been done with single file from repo. Branch name/env name can be configured based on Local store implementation. Due to time constraint, it has not been attempted but will be similar to existing implementation.
 
+  Assumptions or Improvement:
+  1. Code is written to make sure it loads configuration for any one of the environment at one point. 
+  2. One instannce will run in only one envrironment but it may require config file for multiple applications and multiple sources as on typical Microservice architecture, applications are free to have different source storage.
+  3. Logger could have been used but ignored for now.
+  4. Actual deployemnt was not done but shown about changed values of config which can be used in application later.
+ 
 
 Sample Output:
 
