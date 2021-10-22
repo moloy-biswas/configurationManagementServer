@@ -31,7 +31,7 @@ public class LocalStore implements IConfigStore {
                 System.out.println("Successfully connected to Local store");
             }
         } catch (Exception e) {
-            throw new ConfigStoreException("Exception while connecting to store");
+            throw new ConfigStoreException("Exception while connecting to Local store.. "+e.getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ public class LocalStore implements IConfigStore {
                     System.out.println("No File is modified since last poll..skipping..");
                 }
             } catch (IOException e) {
-                throw new ConfigStoreException("Exception while retrieving file from store");
+                throw new ConfigStoreException("Exception while retrieving file from Local store "+e.getMessage());
             }
         return configValues;
     }
@@ -81,7 +81,7 @@ public class LocalStore implements IConfigStore {
                         .collect(Collectors.toMap(line -> line[0].trim(), line ->line[1].trim())));
 
         } catch (IOException e) {
-            throw new ConfigStoreException("Exception while retrieving file from store");
+            throw new ConfigStoreException("Exception while retrieving file from Local store "+e.getMessage());
         }
         return configValues.get(key);
     }

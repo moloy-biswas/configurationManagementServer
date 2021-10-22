@@ -36,12 +36,12 @@ public class GitHubStore implements IConfigStore {
                 System.out.println("Successfully connected to git store..");
             }
         }catch (Exception e){
-            System.out.println("Exception while connecting to git store..");
+            System.out.println("Exception while connecting to git store.."+e.getMessage());
         }
     }
 
     @Override
-    public Map<String, Map<String, String>> retrieveFile(List<String> application, String env) throws ConfigStoreException {
+    public Map<String, Map<String, String>> retrieveFile(List<String> application, String env){
         final Map<String, Map<String, String>> configValues = new HashMap<>();
         application.stream().forEach( app -> {
             try {

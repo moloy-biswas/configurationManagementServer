@@ -46,7 +46,7 @@ public class ConfigurationManager {
                         if(ConfigStoreType.LOCAL.getName().equals(store)){
                             loadLocalConfig(store, application, env);
                         }else if(ConfigStoreType.GIT.getName().equals(store)){
-
+                            //
                         }
                     });
             }, INITIAL_DELAY, POLL_DELAY, TimeUnit.SECONDS);
@@ -61,7 +61,7 @@ public class ConfigurationManager {
             configValues = configStore.retrieveFile(application, env);
             System.out.println("Config Values loaded: "+configValues);
         } catch (ConfigStoreException e) {
-            e.printStackTrace();
+            System.out.println("Exception while loading config for Local store"+e.getMessage());
         }
         return configValues;
     }
@@ -73,7 +73,8 @@ public class ConfigurationManager {
             configStore.connectToStore(null);
             retrieveValue = configStore.retrieveValue(application, key, env);
         } catch (ConfigStoreException e) {
-            e.printStackTrace();
+            System.out.println("Exception while retrieving config for application "
+                    +application+" with key "+key+e.getMessage());
         }
         System.out.println("Configuration value for key "+key+" is "+retrieveValue);
         return retrieveValue;
